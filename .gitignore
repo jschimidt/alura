@@ -1,0 +1,38 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+imersao-react/aluraquiz/node_modules
+api-rest-nodejs/node_modules
+imersao-react/aluraquiz/.pnp
+imersao-react/aluraquiz/pnp.js
+
+# testing
+imersao-react/aluraquiz/coverage
+
+# next.js
+imersao-react/aluraquiz/.next/
+imersao-react/aluraquiz/out/
+
+# production
+imersao-react/aluraquiz/build
+
+# misc
+imersao-react/aluraquiz/.DS_Store
+imersao-react/aluraquiz/*.pem
+
+# debug
+imersao-react/aluraquiz/npm-debug.log*
+imersao-react/aluraquiz/yarn-debug.log*
+imersao-react/aluraquiz/yarn-error.log*
+
+# local env files
+imersao-react/aluraquiz/.env.local
+imersao-react/aluraquiz/.env.development.local
+imersao-react/aluraquiz/.env.test.local
+imersao-react/aluraquiz/.env.production.local
+
+# vercel
+imersao-react/aluraquiz/.vercel
+api-rest-nodejs/package-lock.json
+imersao-react/aluraquiz/package-lock.json
+imersao-react/aluraquiz/README.md
