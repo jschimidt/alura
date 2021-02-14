@@ -1,61 +1,39 @@
-const conexao = require('../infraestrutura/conexao')
-const AtendimentosValidator = require('../validators/atendimentos')
+const atendimentosValidator = require('../validators/atendimentos')
+const dao = require('../dao/atendimentos')
 
 class Atendimentos {
-    add(params,res) {
-        AtendimentosValidator.validate(params)
-        .then((p)=>{
-            const sql = `INSERT INTO Atendimentos SET ?`
-            conexao.query(sql, p, (error, result) => {
-                if (error) {
-                    res.status(400).json(error)
-                } else {
-                    res.status(201).json(result)
-                }
-            })
+    add(params) {
+        return atendimentosValidator.validate(params)
+                .then((validParams)=>{
+                    return dao.add(validParams)
+                            .then(results => {
+                                const id = results.insertId
+                                return {...params,id}
+                            })
         })
         .catch((err)=>{
-            res.status(400).json(err)
+            return new Promise((resolve,reject) => reject(err))
         })                           
     }
 
-    get(id,res) {
-        const sql = `SELECT * FROM Atendimentos WHERE id = ?`
-        conexao.query(sql, id, (error, result) => {
-            if (error) {
-                res.status(400).json(error)
-            } else {
-                res.status(200).json(result[0])
-            }
-        })
+    all() {
+        return dao.all()
     }
 
-    all(req,res) {
-        const sql = `SELECT * FROM Atendimentos;`
-        conexao.query(sql, (error, result) => {
-            if (error) {
-                res.status(400).json(error)
-            } else {
-                res.status(200).json(result)
-            }
-        })
+    get(id) {
+        return dao.get(id)
     }
 
-    patch(id,params,res) {
-        AtendimentosValidator.validate(params)
-            .then((p) => {
-                const sql = `UPDATE Atendimentos SET ? WHERE id = ?`
-                conexao.query(sql, [p, id], (error, result) => {
-                    if (error) {
-                        res.status(400).json(error)
-                    } else {
-                        res.status(200).json(result)
-                    }
-                })
+    patch(id,params) {
+
+        return atendimentosValidator.validate(params)
+            .then((validParams) => {
+                return dao.patch(id, validParams)
+                    .then(results => results)
             })
             .catch((err) => {
-                res.status(400).json(err)
-            }) 
+                return new Promise((resolve, reject) => reject(err))
+            })  
     }
 }
 

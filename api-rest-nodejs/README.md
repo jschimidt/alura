@@ -1,6 +1,7 @@
 # alura
 
 API Rest usando **NodeJs**, **Express**, **MySql** e **Yup**
+Instrutora: [Juliana Negreiros](https://cursos.alura.com.br/user/juunegreiros)
 
 Proposta:
 * Construção de uma simples API 

@@ -1,0 +1,32 @@
+{
+    "/atendimentos": {
+        "post": {
+            "x-swagger-router-controller": "home",
+            "operationId": "index",
+            "tags": [
+                "/atendimentos"
+            ],
+            "parameters": [
+                {
+                    "name": "cliente",
+                    "in":"xpto",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "pet",
+                    "in": "formData",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "profileId",
+                    "in": "formData",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "responses": {}
+        }
+    }
+}

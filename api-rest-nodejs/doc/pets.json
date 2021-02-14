@@ -1,0 +1,36 @@
+{
+    "/pets": {
+        "post": {
+            "x-swagger-router-controller": "home",
+            "operationId": "index",
+            "tags": [
+                "/pets"
+            ],
+            "description": "[Login 123](https://www.google.com)",
+            "parameters": [
+                {
+                    "name": "test",
+                    "in": "formData",
+                    "type": "array",
+                    "collectionFormat": "multi",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                {
+                    "name": "profileId",
+                    "in": "formData",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "file",
+                    "in": "formData",
+                    "type": "file",
+                    "required": "true"
+                }
+            ],
+            "responses": {}
+        }
+    }
+}
