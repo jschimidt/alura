@@ -4,16 +4,16 @@ const dao = require('../dao/atendimentos')
 class Atendimentos {
     add(params) {
         return atendimentosValidator.validate(params)
-                .then((validParams)=>{
-                    return dao.add(validParams)
-                            .then(results => {
-                                const id = results.insertId
-                                return {...params,id}
-                            })
-        })
-        .catch((err)=>{
-            return new Promise((resolve,reject) => reject(err))
-        })                           
+            .then((validParams)=>{
+                return dao.add(validParams)
+            })
+            .then(results => {
+                const id = results.insertId
+                return {...params,id}
+            })
+            .catch((err)=>{
+                return new Promise((resolve,reject) => reject(err))
+            })                           
     }
 
     all() {
@@ -29,8 +29,8 @@ class Atendimentos {
         return atendimentosValidator.validate(params)
             .then((validParams) => {
                 return dao.patch(id, validParams)
-                    .then(results => results)
             })
+            .then(results => results)
             .catch((err) => {
                 return new Promise((resolve, reject) => reject(err))
             })  
